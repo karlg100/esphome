@@ -73,15 +73,20 @@ void Inkplate6::initialize_() {
   }
 
   if (this->partial_buffer_ != nullptr)
-    allocator.deallocate(this->partial_buffer_, buffer_size);
+    ESP_LOGV(TAG, "partial_buffer_ already allocated!");
+    //allocator.deallocate(this->partial_buffer_, buffer_size);
   if (this->partial_buffer_2_ != nullptr)
-    allocator.deallocate(this->partial_buffer_2_, buffer_size * 2);
+    ESP_LOGV(TAG, "partial_buffer_2_ already allocated!");
+    //allocator.deallocate(this->partial_buffer_2_, buffer_size * 2);
   if (this->buffer_ != nullptr)
-    allocator.deallocate(this->buffer_, buffer_size);
+    ESP_LOGV(TAG, "buffer_ already allocated!");
+    //allocator.deallocate(this->buffer_, buffer_size);
   if (this->glut_ != nullptr)
-    allocator32.deallocate(this->glut_, 256 * 9);
+    ESP_LOGV(TAG, "glut_ already allocated!");
+    //allocator32.deallocate(this->glut_, 256 * 9);
   if (this->glut2_ != nullptr)
-    allocator32.deallocate(this->glut2_, 256 * 9);
+    ESP_LOGV(TAG, "glut2_ already allocated!");
+    //allocator32.deallocate(this->glut2_, 256 * 9);
 
   this->buffer_ = allocator.allocate(buffer_size);
   if (this->buffer_ == nullptr) {
