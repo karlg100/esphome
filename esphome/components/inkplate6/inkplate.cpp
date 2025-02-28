@@ -340,23 +340,26 @@ void Inkplate6::display1b_() {
   uint8_t buffer_value;
   const uint8_t *buffer_ptr;
   eink_on_();
-  if (this->model_ == INKPLATE_6_PLUS) {
-    clean_fast_(0, 1);
-    clean_fast_(1, 15);
-    clean_fast_(2, 1);
-    clean_fast_(0, 5);
-    clean_fast_(2, 1);
-    clean_fast_(1, 15);
-  } else {
-    clean_fast_(0, 1);
-    clean_fast_(1, 21);
-    clean_fast_(2, 1);
-    clean_fast_(0, 12);
-    clean_fast_(2, 1);
-    clean_fast_(1, 21);
-    clean_fast_(2, 1);
-    clean_fast_(0, 12);
-    clean_fast_(2, 1);
+
+  if (!skip_clear_) { // if set, don't reset the display
+    if (this->model_ == INKPLATE_6_PLUS) {
+      clean_fast_(0, 1);
+      clean_fast_(1, 15);
+      clean_fast_(2, 1);
+      clean_fast_(0, 5);
+      clean_fast_(2, 1);
+      clean_fast_(1, 15);
+    } else {
+      clean_fast_(0, 1);
+      clean_fast_(1, 21);
+      clean_fast_(2, 1);
+      clean_fast_(0, 12);
+      clean_fast_(2, 1);
+      clean_fast_(1, 21);
+      clean_fast_(2, 1);
+      clean_fast_(0, 12);
+      clean_fast_(2, 1);
+    }
   }
 
   uint32_t clock = (1 << this->cl_pin_->get_pin());

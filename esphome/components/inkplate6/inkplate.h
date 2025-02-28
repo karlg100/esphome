@@ -220,6 +220,7 @@ class Inkplate6 : public display::DisplayBuffer, public i2c::I2CDevice {
   uint32_t partial_updates_{0};
 
   bool block_partial_{true};
+  bool skip_clear_{true};
   bool greyscale_;
   bool partial_updating_;
 
