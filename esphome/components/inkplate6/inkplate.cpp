@@ -341,7 +341,7 @@ void Inkplate6::display1b_() {
   const uint8_t *buffer_ptr;
   eink_on_();
 
-  if (!skip_clear_) { // if set, don't reset the display
+  if (!skip_reset_) { // if set, don't reset the display
     if (this->model_ == INKPLATE_6_PLUS) {
       clean_fast_(0, 1);
       clean_fast_(1, 15);
@@ -556,13 +556,6 @@ bool Inkplate6::partial_update_() {
   int rep = (this->model_ == INKPLATE_6_V2) ? 6 : 5;
 
   eink_on_();
-
-  // If we recently slept, then our refresh couter is zero.  if we are zero
-  // then we should wipe the screen white since the last partial buffer was forgotton
-  if ( partial_updates_ == 0) {
-    clean_fast_(0, 1);   // White
-    clean_fast_(0, 8);   // White to White
-  }
 
   uint32_t clock = (1 << this->cl_pin_->get_pin());
   uint32_t data_mask = this->get_data_pin_mask_();
