@@ -93,7 +93,7 @@ class Inkplate6 : public display::DisplayBuffer, public i2c::I2CDevice {
       this->initialize_();
   }
   void set_partial_updating(bool partial_updating) { this->partial_updating_ = partial_updating; }
-  void set_skip_reset(bool skip_reset { this->skip_reset_ = skip_reset; }
+  void set_skip_reset(bool skip_reset) { this->skip_reset_ = skip_reset; }
   void set_full_update_every(uint32_t full_update_every) { this->full_update_every_ = full_update_every; }
 
   void set_model(InkplateModel model) { this->model_ = model; }
